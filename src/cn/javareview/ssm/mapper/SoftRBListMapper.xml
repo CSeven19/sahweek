@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.javareview.ssm.mapper.SoftRBListMapper" >
+<resultMap id="BaseResultMap" type="cn.javareview.ssm.po.SoftRBList" >
+    <id column="BRid" property="BRid" jdbcType="INTEGER" />
+    <result column="BR_difficultLevel" property="BR_difficultLevel" jdbcType="INTEGER" />
+    <result column="BR_reviewLevel" property="BR_reviewLevel" jdbcType="INTEGER" />
+    <result column="BR_pdf" property="BR_pdf" jdbcType="INTEGER" />
+    <result column="BR_note" property="BR_note" jdbcType="INTEGER" />
+    <result column="BR_softApplication" property="BR_softApplication" jdbcType="INTEGER" />
+    <result column="my_content" property="my_content" jdbcType="INTEGER" />
+	<result column="BR_name" property="BR_name" jdbcType="VARCHAR" />
+    <result column="BR_reviewDuration" property="BR_reviewDuration" jdbcType="VARCHAR" />
+</resultMap>
+  <select id="selectAllList" resultMap="BaseResultMap" >
+    select * from softbr_list order by BRid
+  </select>
+  <select id="selectSkillListById" parameterType="java.lang.Integer" resultType="cn.javareview.ssm.po.SoftRBList" >
+    select softbr_list.* from softbr_list where BRid=#{BRid,jdbcType=INTEGER}
+  </select>
+</mapper>

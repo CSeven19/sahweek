@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sgogo.ssm.mapper.ScheduleMapper" >
+  <resultMap id="ScheduleBaseResultMap" type="cn.sgogo.ssm.po.Schedule" >
+    <id column="scheduleid" property="scheduleid" jdbcType="INTEGER" />
+	<result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+    <result column="completed" property="completed" jdbcType="VARCHAR" />
+    <result column="logindate" property="logindate" jdbcType="DATE" />
+    <result column="completeddate" property="completeddate" jdbcType="DATE" />
+  </resultMap>
+  <insert id="insertlearnrecord" parameterType="cn.sgogo.ssm.po.Schedule" >
+    insert into s_schedule(content, level, completed, logindate, completeddate) values (#{content,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{completed,jdbcType=VARCHAR}, #{logindate,jdbcType=DATE}, #{completeddate,jdbcType=DATE}
+      )
+  </insert>
+  <select id="showshedulelist" resultType="cn.sgogo.ssm.po.Schedule" >
+    select s_schedule.* from s_schedule
+  </select>
+</mapper>

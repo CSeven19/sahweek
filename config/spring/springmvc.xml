@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd 
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd"> 
+	
+	<!-- 1 -->
+	<!--配置Handler  -->
+	<!-- <bean name="/queryItems.action" class="cn.javareview.ssm.controller.ItemsController"></bean> -->
+	<!--处理器映射器 
+	    BeanName作为URL来进行映射查找handler,因此需要配置handler。
+	 -->
+	<!-- <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean> -->
+	<!--处理器适配器
+	       框架根据HandlerAdapter接口来判断是否是适配器
+	  -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" /> -->
+	
+	<!-- 2 -->
+	<!--注解的处理器映射器  -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean> -->
+	<!--注解的处理器适配器  -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean> -->
+	
+	<!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入 加载对应Handler的功能  -->
+	<context:component-scan base-package="cn.sgogo.ssm.controller" />
+	<!-- 3 -->
+	<!-- 激活@Controller模式
+		  替代上面的注解处理器映射器，适配器的配置。
+		  默认加载了很多参数绑定方法，比如json转换解析器.
+	 -->
+	<mvc:annotation-driven conversion-service="conversionService"/><!--conversion-service 应用自定义参数绑定，实现日期转换器 -->
+	
+	
+	<!--视图解析器  -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value></value>
+		</property>
+		<property name="suffix">
+			<value></value>
+		</property>
+	</bean>
+	
+	<!-- 自定义参数绑定 -->
+	<!-- org.springframework.format.support.FormattingConversionServiceFactoryBean为springmvc对外自定义参数绑定接口 -->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<!-- 转换器 -->
+		<property name="converters">
+			<list>
+				<!-- 日期类型转换 -->
+				<bean class="cn.sgogo.ssm.controller.converter.CustomDateConverter"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 文件上传处理工具设定 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+        p:defaultEncoding="UTF-8"
+        p:maxUploadSize="5400000"
+     >
+    </bean>
+</beans>

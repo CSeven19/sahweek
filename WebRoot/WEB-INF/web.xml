@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name>sgogo</display-name>
+  
+  <!-- 加载spring容器(配置完后台DAO,SERVICE后，需要加载spring的这些BEAN(applicationContext-*.xml) ) -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/applicationContext-*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+  
+  
+  <!-- SpringMVC前端控制器配置 -->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> <!-- 自定义springmvc的配置文件名称和路径 -->
+		<!--contextConfigLocation配置springmvc.xml来加载其他的配置文件:处理映射器/处理适配器/视图解析器等  
+		    如果此处不配置springmvc.xml URL 默认加载/WEB-INFO/servlet名称-servlet.xml(即springmvc-servlet.xml)
+		-->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring/springmvc.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<!-- <1>:*.action
+		     <2>:/       //因为DispatcherServlet只能解析Handler，静态文件（jsp等）需配置过滤。
+		     <3>:/*      //放弃，不对。
+		 -->
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
+	
+	<!-- post乱码过虑器 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+  	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

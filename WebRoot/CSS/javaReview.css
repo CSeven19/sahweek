@@ -1,0 +1,74 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    width:1280px;
+	height:800px;
+}
+.audioIndexTheme{
+	position:absolute;
+	width:1280px;
+	height:800px;
+	background-image: url(/Java_Review2016/Image/audioIndexTheme.png);
+	background-repeat: no-repeat;
+	z-index:-1;
+}
+.audinIndexInput{
+	width:60px;
+	text-align:center;
+	boder:none!important;
+	background-color:transparent!important;
+}
+.audioIndexUl li{
+	height:18px;
+	list-style-type:none;
+}
+.footer{
+	background-color: #f5f5f5;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 70px;
+    padding: 30px 0;
+    text-align: center;
+}
+.audioIndexMainDiv{
+	width:1280px;
+	height:700px;
+}
+.audioIndexDivMoney{
+	width:224px;
+	height:167px;
+	display:inline-block;
+	background-image: url(/Java_Review2016/Image/money.png);
+	background-repeat: no-repeat;
+}
+.audioIndexDivAnt{
+	width:234px;
+	height:107px;
+	display:inline-block;
+	background-image: url(/Java_Review2016/Image/ant.png);
+	background-repeat: no-repeat;
+}
+.audioIndexDivParams{
+	width:233px;
+	height:638px;
+	background-image: url(/Java_Review2016/Image/statuspane.png);
+	background-repeat: no-repeat;
+}
+.audioIndexDivEquips{
+	width:334px;
+	height:247px;
+	display:inline-block;
+	background-image: url(/Java_Review2016/Image/Equips.png);
+	background-repeat: no-repeat;
+}
+.audioIndexDivSkills{
+	width:334px;
+	height:381px;
+	display:inline-block;
+	background-image: url(/Java_Review2016/Image/skillpane.png);
+	background-repeat: no-repeat;
+}
+
+.softRBpanemainTheme{
+	background-image: url(/Java_Review2016/Image/skillPaneTheme.png);
+	background-repeat: no-repeat;
+}

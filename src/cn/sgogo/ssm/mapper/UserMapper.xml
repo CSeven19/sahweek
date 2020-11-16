@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sgogo.ssm.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="cn.sgogo.ssm.po.User" >
+    <id column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="password" property="password" jdbcType="CHAR" />
+  </resultMap>
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select s_user.userid,s_user.name,s_user.password from s_user where s_user.name = #{name,jdbcType=CHAR}
+  </select>
+</mapper>

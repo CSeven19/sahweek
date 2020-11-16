@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<UserParams>
+    <id>1</id>
+    <name>Seven Archer</name>
+    <Level>2</Level>
+    <HP>50/100</HP>
+    <EP>60/100</EP>
+    <CP>70/100</CP>
+    <tairixyoku>30/100</tairixyoku>
+    <koudourixyoku>80/100</koudourixyoku>
+    <kannsokurixyoku>80/100</kannsokurixyoku>
+    <balance>84/100</balance>
+    <exp>22</exp>
+    <next>25</next>
+    <skillsa>SoftRB</skillsa>
+    <skillsb>Japanese</skillsb>
+    <RMB>4300</RMB>
+    <playtime>28&amp;#24180;0&amp;#26376;7&amp;#22825;</playtime>
+    <jacket>&amp;#30772;&amp;#26087;&amp;#22799;&amp;#35013;</jacket>
+    <trousers>&amp;#30772;&amp;#26087;&amp;#29275;&amp;#20180;&amp;#35044;</trousers>
+    <mood>4/5</mood>
+</UserParams>
